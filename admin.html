@@ -1,7 +1,17 @@
 <!DOCTYPE html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src https://sgzijotnawjzcewymovr.supabase.co; img-src data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
-<title>لوحة مستر رغيف</title><link rel="manifest" href="admin-manifest.json">
-<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('admin-sw.js');</script>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' blob: data:; connect-src https://supabase.co; img-src 'self' data: blob:; style-src 'unsafe-inline'; script-src 'self' 'unsafe-inline'; manifest-src 'self' blob: data:; base-uri 'none'; form-action 'none'">
+<title>لوحة مستر رغيف</title>
+<script>
+window.addEventListener('DOMContentLoaded',function(){
+  var c=document.createElement('canvas');c.width=512;c.height=512;
+  var x=c.getContext('2d');x.fillStyle='#112618';x.fillRect(0,0,512,512);
+  x.fillStyle='#8FD196';x.font='bold 80px sans-serif';x.textAlign='center';x.fillText('مستر رغيف',256,280);
+  var m={name:"إدارة طلبات مستر رغيف",short_name:"طلبات مستر رغيف",start_url:location.href,display:"standalone",background_color:"#0B150E",theme_color:"#112618",icons:[{src:c.toDataURL('image/png'),sizes:"512x512",type:"image/png"}]};
+  var l=document.createElement('link');l.rel='manifest';l.href=URL.createObjectURL(new Blob([JSON.stringify(m)],{type:'application/json'}));document.head.appendChild(l);
+  if('serviceWorker' in navigator)navigator.serviceWorker.register('admin-sw.js');
+});
+</script>
+
 
 <style>
 :root{--bg:#0B150E;--card:#132419;--brand:#7A9E7D;--deep:#28622D;--deeper:#112618;--tint:#1A3322;--line:#264530;--tx:#EDF4EE;--mu:#9BB0A2;--acc:#8FD196;--red:#D9382E;--warn:#3B2B08;--warn-tx:#FCD34D;--wa:#128C7E;box-sizing:border-box}*{box-sizing:border-box}

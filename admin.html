@@ -60,8 +60,8 @@ function beep(){window.__beeps++;if(!soundOn)return;try{ctx=ctx||new (window.Aud
 function notify(o){try{if(window.Notification&&Notification.permission==="granted")new Notification("طلب جديد "+o.ref,{body:o.customer_name+" · "+o.total+" ر.س",requireInteraction:true})}catch(e){}}
 function tm(d){try{return new Date(d).toLocaleTimeString("ar-SA",{hour:"2-digit",minute:"2-digit"})}catch(e){return ""}}
 function ago(d){var m=Math.max(0,Math.round((Date.now()-new Date(d))/60000));return m<1?"الآن":m<60?"قبل "+m+" دقيقة":"قبل "+Math.floor(m/60)+" ساعة"}
-function waCustomerUrl(o){var ph=String(o.customer_phone||"").replace(/\D/g,"");if(ph.indexOf("05")===0)ph="966"+ph.slice(1);else if(ph.indexOf("5")===0&&ph.length===9)ph="966"+ph;var msg="مرحباً "+o.customer_name+" 👋
-طلبك رقم ("+o.ref+") من مستر رغيف ";if(o.status==="confirmed")msg+="تم تأكيده وجاري العمل عليه ✅";else if(o.status==="preparing")msg+="قيد التجهيز الآن 🔥";else if(o.status==="ready")msg+="جاهز للاستلام من نافذة الدرايف ثرو! 🥪✨";else msg+="حالته الآن: "+(ST[o.status]||o.status);return "https://wa.me/"+ph+"?text="+encodeURIComponent(msg)}
+function waCustomerUrl(o){var ph=String(o.customer_phone||"").replace(/\D/g,"");if(ph.indexOf("05")===0)ph="966"+ph.slice(1);else if(ph.indexOf("5")===0&&ph.length===9)ph="966"+ph;var msg="مرحباً "+o.customer_name+" 👋\nطلبك رقم ("+o.ref+") من مستر رغيف ";
+if(o.status==="confirmed")msg+="تم تأكيده وجاري العمل عليه ✅";else if(o.status==="preparing")msg+="قيد التجهيز الآن 🔥";else if(o.status==="ready")msg+="جاهز للاستلام من نافذة الدرايف ثرو! 🥪✨";else msg+="حالته الآن: "+(ST[o.status]||o.status);return "https://wa.me/"+ph+"?text="+encodeURIComponent(msg)}
 function draw(){if(!$("tabs"))return;var t=TABS.filter(function(x){return x[0]!=="menu"||role==="admin"});
  $("tabs").innerHTML=t.map(function(x){var n=x[2]?orders.filter(function(o){return x[2].indexOf(o.status)>-1}).length:0;return '<button class="tab" aria-pressed="'+(tab===x[0])+'" data-t="'+x[0]+'">'+x[1]+(x[2]&&x[0]!=="hist"&&n?'<i>'+n+'</i>':'')+'</button>'}).join("");
  if(tab==="sum")return sum();if(tab==="menu")return menu();

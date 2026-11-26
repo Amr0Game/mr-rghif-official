@@ -1,0 +1,15 @@
+{
+  "name": "إدارة طلبات مستر رغيف",
+  "short_name": "طلبات مستر رغيف",
+  "start_url": "./admin.html",
+  "display": "standalone",
+  "background_color": "#0B150E",
+  "theme_color": "#112618",
+  "icons": [
+    {
+      "src": "https://github.io",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
